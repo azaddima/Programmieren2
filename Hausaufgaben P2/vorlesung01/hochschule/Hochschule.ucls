@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.2.2" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
-  <class id="1" language="java" name="hochschule.Person" project="Hausaufgaben P2" 
-    file="/Hausaufgaben P2/vorlesung01/hochschule/Person.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="248" y="356"/>    
+  <class id="1" language="java" name="hochschule.Person" project="Programmieren2" 
+    file="/Programmieren2/vorlesung01/hochschule/Person.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="168" width="127" x="82" y="-4"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="hochschule.Professor" project="Hausaufgaben P2" 
-    file="/Hausaufgaben P2/vorlesung01/hochschule/Professor.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="109" y="105"/>    
+  <class id="2" language="java" name="hochschule.Professor" project="Programmieren2" 
+    file="/Programmieren2/vorlesung01/hochschule/Professor.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="168" width="196" x="377" y="-58"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="3" language="java" name="hochschule.Student" project="Hausaufgaben P2" 
-    file="/Hausaufgaben P2/vorlesung01/hochschule/Student.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="361" y="105"/>    
+  <class id="3" language="java" name="hochschule.Student" project="Programmieren2" 
+    file="/Programmieren2/vorlesung01/hochschule/Student.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="168" width="186" x="383" y="123"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="hochschule.UniversityMain" project="Hausaufgaben P2" 
-    file="/Hausaufgaben P2/vorlesung01/hochschule/UniversityMain.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="480" y="338"/>    
+  <class id="4" language="java" name="hochschule.UniversityMain" project="Programmieren2" 
+    file="/Programmieren2/vorlesung01/hochschule/UniversityMain.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="729" y="131"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
