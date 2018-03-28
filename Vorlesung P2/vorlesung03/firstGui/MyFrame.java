@@ -1,13 +1,18 @@
 package firstGui;
 
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 public class MyFrame extends JFrame {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 
 	public MyFrame() {
 //		setLayout(new FlowLayout());
@@ -24,6 +29,6 @@ public class MyFrame extends JFrame {
 	
 	
 	public static void main(String[] args) {
-		MyFrame frame = new MyFrame();
+		new MyFrame();
 	}
 }
