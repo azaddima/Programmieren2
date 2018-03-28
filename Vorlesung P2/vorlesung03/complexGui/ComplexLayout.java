@@ -11,6 +11,11 @@ import javax.swing.JTextArea;
 
 public class ComplexLayout extends JFrame{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public ComplexLayout() {
 		
 		JPanel westPanel = new JPanel();
