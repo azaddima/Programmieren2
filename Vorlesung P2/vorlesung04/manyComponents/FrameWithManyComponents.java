@@ -13,6 +13,7 @@ import javax.swing.JTextField;
 public class FrameWithManyComponents extends JFrame {
 
 	private JButton okBtn = new JButton("Ok");
+
 	private JButton cancelBtn = new JButton("Cancel");
 	private JRadioButton plainRBtn = new JRadioButton("plain");
 	private JRadioButton boldRBtn = new JRadioButton("bold");
@@ -47,9 +48,59 @@ public class FrameWithManyComponents extends JFrame {
 		setSize(80, 200);
 		setVisible(true);
 	}
-	
+
+	/**
+	 * @return the okBtn
+	 */
+	public JButton getOkBtn() {
+		return okBtn;
+	}
+
+	/**
+	 * @return the cancelBtn
+	 */
+	public JButton getCancelBtn() {
+		return cancelBtn;
+	}
+
+	/**
+	 * @return the plainRBtn
+	 */
+	public JRadioButton getPlainRBtn() {
+		return plainRBtn;
+	}
+
+	/**
+	 * @return the boldRBtn
+	 */
+	public JRadioButton getBoldRBtn() {
+		return boldRBtn;
+	}
+
+	/**
+	 * @return the italicRBtn
+	 */
+	public JRadioButton getItalicRBtn() {
+		return italicRBtn;
+	}
+
+	/**
+	 * @return the textField
+	 */
+	public JTextField getTextField() {
+		return textField;
+	}
+
+	/**
+	 * @return the checkBox
+	 */
+	public JCheckBox getCheckBox() {
+		return checkBox;
+	}
+
+
 	public static void main(String[] args) {
-		new FrameWithManyComponents();
+		new Controller(new FrameWithManyComponents());
 	}
 	
 }
