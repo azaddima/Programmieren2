@@ -20,8 +20,9 @@ public class GameLogic {
 	private boolean spieler1 = true;
 	public static final int SPIELER_1 = 1;
 	public static final int SPIELER_2 = 2;
+	public static final int UNENDSCHIEDEN = 0;
 	private boolean gameOver = false;
-	private int gewinner = 0;
+	private int gewinner = UNENDSCHIEDEN;
 
 	/**
 	 * Die Methode setSymbol versucht an der uebergebenen Position ein das Spielersymbol zu setzen. Dabei sieht das 3x3 Feld wie folgt aus:
@@ -154,7 +155,7 @@ public class GameLogic {
 		} else if (gewinner == SPIELER_2) {
 			spieler1 = true;
 		}
-		gewinner = 0;
+		gewinner = UNENDSCHIEDEN;
 	}
 	
 	/**

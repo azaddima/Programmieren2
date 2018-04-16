@@ -4,29 +4,37 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
 
 public class Controller {
+
+	private GUI gui;
+	private GameLogic gameLogic;
 	
 	public Controller(GUI gui, GameLogic gameLogic) {
+		this.gui = gui;
+		this.gameLogic = gameLogic;
 		
+		restart();
+	}
+	
+	private void restart () {
 		gui.getAbout().addActionListener(l -> {
-//			new AboutDialog(gui, "About", true);
-			JOptionPane.showMessageDialog(gui, "bla");
+			new AboutDialog(gui, "About", true);
+//			JOptionPane.showMessageDialog(gui, "bla");
+		});
+		
+		gui.getClose().addActionListener(l -> {
+			gui.dispose();
+		});
+
+		gui.getRestart().addActionListener(l -> {
+			gameLogic.reset();
+			gui.dispose();
+			gui = new GUI(gameLogic);
+			restart();
 		});
 		
 		for (JButton btn : gui.getButtons()) {
-			gui.btn0.addActionListener(l -> {
-				if (gameLogic.setSymbol(0)) {
-					if (gameLogic.isGameOver()) {
-						gui.update(0);								
-						gui.setGameOver(gameLogic.getGewinner());
-					} else {
-						gui.update(0);								
-					}
-				}
-
-			});
 			
 			btn.addActionListener(new ActionListener() {
 				
@@ -49,6 +57,6 @@ public class Controller {
 				}
 			});
 		}		
+		
 	}
-
 }
