@@ -15,6 +15,8 @@ package ticTacToeMvc;
  */
 public class GameLogic {
 	
+	private String namePlayer1 =  "Spieler 1";
+	private String namePlayer2 =  "Spieler 2";
 	private static final int SIZE = 3;
 	private int [][] feld = new int [SIZE][SIZE];
 	private boolean spieler1 = true;
@@ -199,4 +201,19 @@ public class GameLogic {
 	}
 	
 	
+	public String getNamePlayer1() {
+		return namePlayer1;
+	}
+	
+	public String getNamePlayer2() {
+		return namePlayer2;
+	}
+	
+	public void setNamePlayer1(String namePlayer1) {
+		this.namePlayer1 = namePlayer1;
+	}
+	
+	public void setNamePlayer2(String namePlayer2) {
+		this.namePlayer2 = namePlayer2;
+	}
 }

@@ -8,6 +8,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -24,11 +26,14 @@ public class GUI extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	public static final int CHANGE_PLAYER_NAME = 202;
+//	private Color defaultColor = new Color(238, 238, 238);
+	private Color defaultColor = new Color(204, 240, 99);
+//	private Color defaultColor = Color.BLACK;
+	
 	//which turn is it - text
-	private static final String SPIELER1_TEXT = "Spieler 1 ist an der Reihe";
-	private static final String SPIELER2_TEXT = "Spieler 2 ist an der Reihe";
-	private JLabel playerTxt = new JLabel(SPIELER1_TEXT);
+	private String turnText = " ist an der Reihe";
+	private JLabel playerTxt = new JLabel("");
 	
 	//ImageIcons for x and o
 	private ImageIcon player1Img = new ImageIcon("vorlesung03//ticTacToeMvc//o.jpg");
@@ -41,10 +46,12 @@ public class GUI extends JFrame {
 	private JMenuItem close = new JMenuItem("Close");
 	private JMenuItem restart = new JMenuItem("Restart");
 	private JMenuItem about = new JMenuItem("About");
+	private JMenuItem profile = new JMenuItem("Personalize");
 
 	
 	public GUI(GameLogic gameLogic) {
 		this.gameLogic = gameLogic;
+		playerTxt.setText(gameLogic.getNamePlayer1() + turnText);
 		
 		//add menu
 		JMenuBar menuBar = new JMenuBar();
@@ -54,6 +61,7 @@ public class GUI extends JFrame {
 		file.add(restart);
 		file.add(close);
 		file.add(about);
+		file.add(profile);
 
 		//set Font to the menu
 		Font font = new Font(Font.SANS_SERIF, Font.PLAIN, 20);
@@ -61,12 +69,14 @@ public class GUI extends JFrame {
 		restart.setFont(font); 
 		close.setFont(font);
 		about.setFont(font);
+		profile.setFont(font);
 		
 		//set short cuts
 		restart.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, ActionEvent.ALT_MASK));
 		close.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, ActionEvent.ALT_MASK));
 		about.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, ActionEvent.ALT_MASK));
-		
+		profile.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, ActionEvent.ALT_MASK));
+
 		//add grid with buttons
 		JPanel grid = new JPanel();
 		grid.setLayout(new GridLayout(gameLogic.getSize(), gameLogic.getSize()));
@@ -81,10 +91,22 @@ public class GUI extends JFrame {
 		add(grid, BorderLayout.CENTER);
 		
 		//the label shows which turn it is
+		Box box = new Box(BoxLayout.Y_AXIS);
+		box.setAlignmentX(CENTER_ALIGNMENT);
+		box.setBackground(defaultColor);
+		box.setOpaque(true);
 		playerTxt.setOpaque(true);
-		playerTxt.setHorizontalAlignment(JLabel.CENTER);
+		playerTxt.setBackground(defaultColor);
+		playerTxt.setAlignmentX(JLabel.CENTER_ALIGNMENT);
 		playerTxt.setFont(font.deriveFont(Font.BOLD, new Float(26)));
-		add(playerTxt, BorderLayout.NORTH);	
+		box.add(PaddingService.createPaddings(20, true, defaultColor));
+		box.add(playerTxt);
+		box.add(PaddingService.createPaddings(20, true, defaultColor));
+		add(box, BorderLayout.NORTH);	
+		add(PaddingService.createPaddings(20, true, defaultColor), BorderLayout.SOUTH);
+		add(PaddingService.createPaddings(20, false, defaultColor), BorderLayout.EAST);
+		add(PaddingService.createPaddings(20, false, defaultColor), BorderLayout.WEST);
+
 		
 		setVisible(true);
 		setSize(550, 550);
@@ -114,7 +136,15 @@ public class GUI extends JFrame {
 	public JMenuItem getRestart() {
 		return restart;
 	}
-		
+	
+	/**
+	 * 
+	 * @return profile menu item
+	 */
+	public JMenuItem getProfile() {
+		return profile;
+	}
+	
 	/**
 	 * 
 	 * @return arraylist with JButtons
@@ -144,6 +174,7 @@ public class GUI extends JFrame {
 
 	}
 	
+	
 	/**
 	 * Updates the view. The button with the index get the current player icon. 
 	 * The text for the current player is updated.
@@ -151,14 +182,22 @@ public class GUI extends JFrame {
 	 */
 	public void update(int index) {
 		
-		if (gameLogic.aktuellerSpieler() == GameLogic.SPIELER_1) {
-//			buttons.get(index).setText("X");			
-			buttons.get(index).setIcon(player1Img);
-			playerTxt.setText(SPIELER1_TEXT);
-		} else {
-//			buttons.get(index).setText("O");
-			buttons.get(index).setIcon(player2Img);
-			playerTxt.setText(SPIELER2_TEXT);
+		if (index < buttons.size() && index >= 0) {
+			if (gameLogic.aktuellerSpieler() == GameLogic.SPIELER_1) {
+	//			buttons.get(index).setText("X");			
+				buttons.get(index).setIcon(player1Img);
+				playerTxt.setText(gameLogic.getNamePlayer1() + turnText);
+			} else {
+	//			buttons.get(index).setText("O");
+				buttons.get(index).setIcon(player2Img);
+				playerTxt.setText(gameLogic.getNamePlayer2() + turnText);
+			}
+		} else if(index == CHANGE_PLAYER_NAME) {
+			if (gameLogic.aktuellerSpieler() == GameLogic.SPIELER_1) {
+				playerTxt.setText(gameLogic.getNamePlayer1() + turnText);
+			} else {
+				playerTxt.setText(turnText);
+			}
 		}
 	}
 }

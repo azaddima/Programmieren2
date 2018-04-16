@@ -2,6 +2,9 @@ package ticTacToeMvc;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 import javax.swing.JButton;
 
@@ -21,6 +24,27 @@ public class Controller {
 		gui.getAbout().addActionListener(l -> {
 			new AboutDialog(gui, "About", true);
 //			JOptionPane.showMessageDialog(gui, "bla");
+		});
+		
+		
+		
+		gui.getProfile().addActionListener(l -> {
+			ProfileDialog dialog = new ProfileDialog(gui, "Personalize", true);
+			dialog.addWindowListener(new WindowAdapter() {
+								
+				@Override
+				public void windowClosing(WindowEvent arg0) {
+				}
+				
+				@Override
+				public void windowClosed(WindowEvent arg0) {
+					String namePlayer1 = dialog.getNamePlayer1().getText();
+					String namePlayer2 = dialog.getNamePlayer2().getText();
+					gameLogic.setNamePlayer1(namePlayer1);
+					gameLogic.setNamePlayer2(namePlayer2);
+					gui.update(GUI.CHANGE_PLAYER_NAME);
+				}
+			});
 		});
 		
 		gui.getClose().addActionListener(l -> {
