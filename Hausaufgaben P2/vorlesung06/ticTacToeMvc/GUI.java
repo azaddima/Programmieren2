@@ -46,6 +46,7 @@ public class GUI extends JFrame {
 	private JMenuItem close = new JMenuItem("Close");
 	private JMenuItem restart = new JMenuItem("Restart");
 	private JMenuItem about = new JMenuItem("About");
+	private JMenuItem profile = new JMenuItem("Personalize");
 
 	
 	public GUI(GameLogic gameLogic) {
@@ -60,18 +61,21 @@ public class GUI extends JFrame {
 		file.add(restart);
 		file.add(close);
 		file.add(about);
-
+		file.add(profile);
+		
 		//set Font to the menu
 		Font font = new Font(Font.SANS_SERIF, Font.PLAIN, 20);
 		file.setFont(font);
 		restart.setFont(font); 
 		close.setFont(font);
 		about.setFont(font);
+		profile.setFont(font);
 		
 		//set short cuts
 		restart.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, ActionEvent.ALT_MASK));
 		close.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, ActionEvent.ALT_MASK));
 		about.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, ActionEvent.ALT_MASK));
+		profile.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, ActionEvent.ALT_MASK));
 
 		//add grid with buttons
 		JPanel grid = new JPanel();
@@ -133,6 +137,14 @@ public class GUI extends JFrame {
 		return restart;
 	}
 	
+	/**
+	 * 
+	 * @return profile menu item
+	 */
+	public JMenuItem getProfile() {
+		return profile;
+	}
+
 	
 	/**
 	 * 
@@ -152,7 +164,11 @@ public class GUI extends JFrame {
 			playerTxt.setBackground(Color.GREEN.darker());
 		} 
 		else {
-			playerTxt.setText("Der Spieler " + player + " hat gewonnen!");
+			if (player == GameLogic.SPIELER_1) {
+				playerTxt.setText(gameLogic.getNamePlayer1() + " hat gewonnen!");				
+			} else {
+				playerTxt.setText(gameLogic.getNamePlayer2() + " hat gewonnen!");								
+			}
 			playerTxt.setForeground(Color.WHITE);
 			playerTxt.setBackground(Color.RED.darker());
 			
