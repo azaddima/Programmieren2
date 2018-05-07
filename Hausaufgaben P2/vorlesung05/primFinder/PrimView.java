@@ -9,6 +9,12 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+/*
+ * Unsere View implementiert das Interface Observer, 
+ * um mitzubekommen, wenn sich Daten in unserem Model ändern. 
+ * Damit muss die View die "public void update(Observable o, Object arg)"-Methode 
+ * implementieren. Wenn es eine Änderung im Model gab, wird diese Methode aufgerufen.
+ */
 public class PrimView extends JFrame implements Observer{
 
 	/**
@@ -52,8 +58,9 @@ public class PrimView extends JFrame implements Observer{
 				resultLabel.setText("Die Zahl ist eine Primzahl");
 			else
 				resultLabel.setText("Die Zahl ist keine Primzahl");
+
 		}
-		else if (arg instanceof String) {
+		else if (arg instanceof String) {	//falls in dem Textfeld keine Zahl stand
 			resultLabel.setText((String) arg);
 		}
 		resultLabel.setVisible(true);
